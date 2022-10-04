@@ -1,4 +1,10 @@
-﻿Specifikationer:
+﻿BÖRJA MED: 
+	huvudmenyn och användarvalen
+	Skapa klass av Kitchenappliance interfacet
+	Skapa lista innehållande ett par objekt
+
+
+Specifikationer:
 
 	1. ANVÄND KÖKSAPPARAT
 		- skriv ut undermeny val av köksapparat
