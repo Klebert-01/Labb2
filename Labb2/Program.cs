@@ -75,7 +75,7 @@ void AddNewAppliance()
 
     Console.Write("Is the appliance working or not? (Y/N) ");
     bool newApplianceIsWorking;
-    string yesOrNo = Console.ReadLine();
+    string yesOrNo = Console.ReadLine();    //kanske char istället och readkey? behövs nog string to char konvertering då, tror iofs inte efter snabb googling
 
     if (yesOrNo.ToUpper() == "Y")
     {
@@ -87,7 +87,7 @@ void AddNewAppliance()
     }
     else
     {
-        Console.WriteLine("You need to enter Y or N");
+        Console.WriteLine("You need to enter Y or N, returning to menu try again");
         //return gör att vi avslutar metoden, vill egentligen fixa så den bara loopar tillbaka till nytt försök
         return;
     }
