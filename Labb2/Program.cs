@@ -1,9 +1,9 @@
 ﻿bool on = true;
 
-
-var applianceList = new List<KitchenAppliance> { new KitchenAppliance("Waffle iron", "Bosch", true),
-                                                 new KitchenAppliance("Toaster", "LG", true),
-                                                 new KitchenAppliance("Coffee maker", "Electrolux", false) };
+//deklarera listan och lägger till några objekt av KitchenAppliance-klassen till den
+var applianceList = new List<KitchenAppliance> { new KitchenAppliance("Waffle iron", "Bosch", "used", true),
+                                                 new KitchenAppliance("Toaster", "LG","new", true),
+                                                 new KitchenAppliance("Coffee maker", "Electrolux","used", false) };
 
 
 while (on)
@@ -17,27 +17,22 @@ while (on)
     switch (input)
     {
         case 1:
-
-            //kod
+            UseAppliance();
             break;
 
         case 2:
-
-            //kod
+            AddNewAppliance();
             break;
 
         case 3:
-
-            //kod
+            ListAppliances();
             break;
 
         case 4:
-
-            //kod
+            RemoveAppliance();
             break;
 
         case 5:
-
             Console.WriteLine("Leaving the kitchen");
             //bool on blir false, går ur whileloopen/avslutar programmet
             on = false;
@@ -48,8 +43,6 @@ while (on)
 }
 
 
-
-
 void PrintOutMenu()
 {
     Console.WriteLine("~~~~  ARVIDS KITCHEN  ~~~~\n" +
@@ -58,22 +51,56 @@ void PrintOutMenu()
                       "[3] List available appliances\n" +
                       "[4] Remove kitchen appliance\n" +
                       "[5] Leave the kitchen");
-
 }
 
-void UseAppliance()
+void UseAppliance()     //gå tillbaka till den här
 {
+    Console.WriteLine("What appliance do you want to use?\n");
+
+    for (int i = 0; i < applianceList.Count; i++)
+    {
+        Console.WriteLine($"{i + 1}. {applianceList[i].Type}");
+    }
 
 }
 
 void AddNewAppliance()
 {
+    Console.Write("Type of appliance: ");
+    string newApplianceType = Console.ReadLine();
+    Console.Write("Brand: ");
+    string newApplianceBrand = Console.ReadLine();
+    Console.Write("Condition: ");
+    string newApplianceCondition = Console.ReadLine();
+
+    bool newApplianceIsWorking = true;  //ändra så den blir true eller false beroende på input yes or no
+
+    var newAppliance = new KitchenAppliance(newApplianceType,newApplianceBrand,newApplianceCondition,newApplianceIsWorking);
+
+    applianceList.Add(newAppliance);
+
+    Console.WriteLine("New appliance added to the kitchen!");
 
 }
 
 void ListAppliances()
 {
-
+    Console.WriteLine("Available appliances:");
+    //itererar genom listan av köksapparater
+    foreach (var appliance in applianceList)
+    {
+        //skriver ut typ, märke och skick för varje objekt i listan med apparater
+        Console.WriteLine($"---------------------\n" +
+                          $"Type: {appliance.Type}\n" +
+                          $"Brand: {appliance.Brand}\n" +
+                          $"Condition: {appliance.Condition}");
+        //om classmember(?) IsFunctioning är satt till true, skriver ut functioning
+        if (appliance.IsFunctioning == true)
+            Console.WriteLine("State: Functioning");
+        //annars skriv ut not functioning
+        else
+            Console.WriteLine("State: Not functioning");
+    }
 }
 
 void RemoveAppliance()

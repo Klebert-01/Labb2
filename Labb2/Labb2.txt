@@ -1,7 +1,12 @@
-﻿BÖRJA MED: 
-	huvudmenyn och användarvalen
-	Skapa klass av Kitchenappliance interfacet
-	Skapa lista innehållande ett par objekt
+﻿TO DO NOW:
+	1. list appliances metoden
+	2. use appliance metoden
+	3. add new
+	4. remove appl
+
+Notes: 
+	ändra appliance condition till en bool som är used eller new?
+	
 
 
 Specifikationer:
@@ -38,14 +43,14 @@ Specifikationer:
 	- programmet ska felhantera all inmatning från användaren (tryparse/ trycatch nånstans kanske)
 
 KRAV: 
-	- Variabler
-	- Properties (auto-implemented properties)
+	- Variabler OK
+	- Properties (auto-implemented properties) OK
 	- Typkonvertering
 	- Felhantering med try-catch
-	- Klass/klasser [20]
-	- Abstrakt klass/klasser [21]
-	- Interface: Använd bifogad kod (valfritt att utöka) [22]
-	- Inkapsling [23]
+	- Klass/klasser OK
+	- Abstrakt klass/klasser
+	- Interface: Använd bifogad kod (valfritt att utöka) OK
+	- Inkapsling
 	- Metoder
 	- Iteration
 	- Selektion
