@@ -70,17 +70,32 @@ void AddNewAppliance()
     string newApplianceType = Console.ReadLine();
     Console.Write("Brand: ");
     string newApplianceBrand = Console.ReadLine();
-    Console.Write("Condition: ");
+    Console.Write("Condition (used or new) : ");    //gå tillbaka till denna kanske bool ist
     string newApplianceCondition = Console.ReadLine();
 
-    bool newApplianceIsWorking = true;  //ändra så den blir true eller false beroende på input yes or no
+    Console.Write("Is the appliance working or not? (Y/N) ");
+    bool newApplianceIsWorking;
+    string yesOrNo = Console.ReadLine();
 
-    var newAppliance = new KitchenAppliance(newApplianceType,newApplianceBrand,newApplianceCondition,newApplianceIsWorking);
+    if (yesOrNo.ToUpper() == "Y")
+    {
+        newApplianceIsWorking = true;
+    }
+    else if (yesOrNo.ToUpper() == "N")
+    {
+        newApplianceIsWorking = false;
+    }
+    else
+    {
+        Console.WriteLine("You need to enter Y or N");
+        //return gör att vi avslutar metoden, vill egentligen fixa så den bara loopar tillbaka till nytt försök
+        return;
+    }
+    KitchenAppliance newAppliance = new KitchenAppliance(newApplianceType, newApplianceBrand, newApplianceCondition, newApplianceIsWorking);
 
     applianceList.Add(newAppliance);
 
     Console.WriteLine("New appliance added to the kitchen!");
-
 }
 
 void ListAppliances()

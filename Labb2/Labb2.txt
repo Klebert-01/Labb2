@@ -1,4 +1,9 @@
-﻿TO DO NOW:
+﻿BUGGAR: 
+	- Add new appliance metoden, vid fel input vill jag inte gå ur metoden helt utan bara loopa om ifsatsen tills man skrivit in Y eller N
+
+
+
+TO DO NOW:
 	1. list appliances metoden
 	2. use appliance metoden
 	3. add new
@@ -6,6 +11,7 @@
 
 Notes: 
 	ändra appliance condition till en bool som är used eller new?
+
 	
 
 
