@@ -1,4 +1,53 @@
-﻿PrintOutMenu();
+﻿bool on = true;
+
+
+var applianceList = new List<KitchenAppliance> { new KitchenAppliance("Waffle iron", "Bosch", true),
+                                                 new KitchenAppliance("Toaster", "LG", true),
+                                                 new KitchenAppliance("Coffee maker", "Electrolux", false) };
+
+
+while (on)
+{
+    //kallar på menymetoden
+    PrintOutMenu();
+
+    //tar emot användarens menyval
+    int.TryParse(Console.ReadLine(), out int input);
+
+    switch (input)
+    {
+        case 1:
+
+            //kod
+            break;
+
+        case 2:
+
+            //kod
+            break;
+
+        case 3:
+
+            //kod
+            break;
+
+        case 4:
+
+            //kod
+            break;
+
+        case 5:
+
+            Console.WriteLine("Leaving the kitchen");
+            //bool on blir false, går ur whileloopen/avslutar programmet
+            on = false;
+            break;
+
+    }
+
+}
+
+
 
 
 void PrintOutMenu()
