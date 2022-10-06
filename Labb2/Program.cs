@@ -38,6 +38,9 @@ while (on)
             //bool on blir false, går ur whileloopen/avslutar programmet
             on = false;
             break;
+        default:
+            Console.WriteLine("Choose between 1-5 in the menu");
+            break;
 
     }
 
@@ -56,9 +59,22 @@ void PrintOutMenu()
 
 void UseAppliance()
 {
-    Console.WriteLine("What appliance do you want to use?\n");
 
+    if (applianceList.Count < 1)
+    {
+        Console.WriteLine("There is nothing in the kitchen to use.");
+        return;
+    }
+
+    Console.WriteLine("What appliance do you want to use?\n");
     ListAppliancesNumbered();
+
+    Int32.TryParse(Console.ReadLine(), out int userChoice);
+
+    foreach (var item in applianceList)     //denna e bara placeholder. Måste koppla userchoice till metoden
+    {
+        item.Use();
+    }
 
 }
 
@@ -131,7 +147,17 @@ void RemoveAppliance()
 
     Int32.TryParse(Console.ReadLine(), out int userChoice);
 
-    applianceList.RemoveAt(userChoice - 1);
+    try
+    {
+        applianceList.RemoveAt(userChoice - 1);     //här kan jag använda try catch
+    }
+    catch (Exception e)
+    {
+        //skriver ut instruktioner till användaren samt exception-meddelandet
+        Console.WriteLine($"You need to choose a number corresponding to an appliance in the list.\n\n" +
+                          $"{e}\n");
+    }
+
 }
 
 void ListAppliancesNumbered()
