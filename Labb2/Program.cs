@@ -1,9 +1,10 @@
-﻿bool on = true;
+﻿
+bool on = true;
 
-//deklarera listan och lägger till några objekt av KitchenAppliance-klassen till den
-var applianceList = new List<KitchenAppliance> { new KitchenAppliance("Waffle iron", "Bosch", "used", true),
-                                                 new KitchenAppliance("Toaster", "LG","new", true),
-                                                 new KitchenAppliance("Coffee maker", "Electrolux","used", false) };
+//deklarera listan och lägger till tre objekt av KitchenAppliance-klassen till den
+var applianceList = new List<KitchenAppliance> { new KitchenAppliance("Waffle iron", "Bosch", true),
+                                                 new KitchenAppliance("Toaster", "LG", true),
+                                                 new KitchenAppliance("Coffee maker", "Electrolux",false) };
 
 
 while (on)
@@ -53,29 +54,29 @@ void PrintOutMenu()
                       "[5] Leave the kitchen");
 }
 
-void UseAppliance()     //gå tillbaka till den här
+void UseAppliance()
 {
     Console.WriteLine("What appliance do you want to use?\n");
 
-    for (int i = 0; i < applianceList.Count; i++)
-    {
-        Console.WriteLine($"{i + 1}. {applianceList[i].Type}");
-    }
+    ListAppliancesNumbered();
 
 }
 
 void AddNewAppliance()
 {
+    //deklarerar variabler för skapande av nytt KitchenAppliance-objekt
+    string newApplianceType;
+    string newApplianceBrand;
+    bool newApplianceIsWorking;
+
     Console.Write("Type of appliance: ");
-    string newApplianceType = Console.ReadLine();
+    newApplianceType = Console.ReadLine();
+
     Console.Write("Brand: ");
-    string newApplianceBrand = Console.ReadLine();
-    Console.Write("Condition (used or new) : ");    //gå tillbaka till denna kanske bool ist
-    string newApplianceCondition = Console.ReadLine();
+    newApplianceBrand = Console.ReadLine();
 
     Console.Write("Is the appliance working or not? (Y/N) ");
-    bool newApplianceIsWorking;
-    string yesOrNo = Console.ReadLine();    //kanske char istället och readkey? behövs nog string to char konvertering då, tror iofs inte efter snabb googling
+    string yesOrNo = Console.ReadLine();
 
     if (yesOrNo.ToUpper() == "Y")
     {
@@ -91,11 +92,11 @@ void AddNewAppliance()
         //return gör att vi avslutar metoden, vill egentligen fixa så den bara loopar tillbaka till nytt försök
         return;
     }
-    KitchenAppliance newAppliance = new KitchenAppliance(newApplianceType, newApplianceBrand, newApplianceCondition, newApplianceIsWorking);
 
+    KitchenAppliance newAppliance = new KitchenAppliance(newApplianceType, newApplianceBrand, newApplianceIsWorking); //går det att göra denna på ett smartare sett? 
     applianceList.Add(newAppliance);
 
-    Console.WriteLine("New appliance added to the kitchen!");
+    Console.WriteLine("New appliance added to the kitchen!\n");
 }
 
 void ListAppliances()
@@ -107,8 +108,7 @@ void ListAppliances()
         //skriver ut typ, märke och skick för varje objekt i listan med apparater
         Console.WriteLine($"---------------------\n" +
                           $"Type: {appliance.Type}\n" +
-                          $"Brand: {appliance.Brand}\n" +
-                          $"Condition: {appliance.Condition}");
+                          $"Brand: {appliance.Brand}");
         //om classmember(?) IsFunctioning är satt till true, skriver ut functioning
         if (appliance.IsFunctioning == true)
             Console.WriteLine("State: Functioning");
@@ -120,5 +120,27 @@ void ListAppliances()
 
 void RemoveAppliance()
 {
+    if (applianceList.Count < 1)
+    {
+        Console.WriteLine("There is nothing in the kitchen to remove.");
+        return;
+    }
 
+    Console.WriteLine("Choose corresponding number: ");
+    ListAppliancesNumbered();
+
+    Int32.TryParse(Console.ReadLine(), out int userChoice);
+
+    applianceList.RemoveAt(userChoice - 1);
+}
+
+void ListAppliancesNumbered()
+{
+    int i;
+
+    for (i = 0; i < applianceList.Count; i++)
+    {
+        Console.WriteLine($"{i + 1}. {applianceList[i].Type}");
+
+    }
 }

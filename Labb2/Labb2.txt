@@ -1,5 +1,19 @@
-﻿BUGGAR: 
-	- Add new appliance metoden, vid fel input vill jag inte gå ur metoden helt utan bara loopa om ifsatsen tills man skrivit in Y eller N
+﻿NOTES:
+	AddNewAppliance():
+
+		- try catch kan jag nog lägga i istället för if, else if else statementet i AddNewAppliance
+			eller kanske fel ställe att lägga det på.. 
+
+		- Return vid else statementet. 
+			vill egentligen loopa den så man får skriva Y/N igen och inte göra om hela processen
+																							
+		- behöver jag lägga listan i en egen klass och sen använda "using" av den klassen? 
+
+	UseAppliance():
+		
+		- kan jag göra en switch för valet? eller ska jag ändra applianceList[i] med Console.ReadLine?
+		  och sen skriva ut using applianceList[0] (första elemetet type)
+
 
 
 
@@ -9,8 +23,6 @@ TO DO NOW:
 	3. add new
 	4. remove appl
 
-Notes: 
-	ändra appliance condition till en bool som är used eller new?
 
 	
 
@@ -25,7 +37,7 @@ Specifikationer:
 		  ANNARS skriv ut att apparaten används
 		- gå tillbaka till huvudmenyn
 
-	2. LÄGG TILL NY KÖKSAPPARAT [ ]
+	2. LÄGG TILL NY KÖKSAPPARAT [x]	mer eller mindre klar
 
 		- användare får mata in typ, märke, skick samt "j" eller "n"
 			OM "j" betyder det att apparaten fungerar, OM "n" betyder det att apparaten är trasig
@@ -38,7 +50,7 @@ Specifikationer:
 			i utskriften ska typ, märke och skick samt trasig eller hel skrivas ut
 		- tillbaka till huvudmenyn
 
-	4. TA BORT KÖKSAPPARAT [ ]
+	4. TA BORT KÖKSAPPARAT [X]
 
 		- skriv ut numrerad lista över alla apparater
 		- låt användaren ange vilken apparat i lista som ska tas bort och läs in valet
@@ -56,8 +68,8 @@ Specifikationer:
 KRAV: 
 	- Variabler [X]
 	- Properties (auto-implemented properties) [X]
-	- Typkonvertering
-	- Felhantering med try-catch
+	- Typkonvertering [X]
+	- Felhantering med try-catch [ ]
 	- Klass/klasser [x]
 	- Abstrakt klass/klasser [ ]	behövs verkligen denna? 
 	- Interface: Använd bifogad kod (valfritt att utöka) [ ] behövs?

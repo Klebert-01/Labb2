@@ -1,21 +1,21 @@
 ﻿
-public class KitchenAppliance
+public class KitchenAppliance : IKitchenAppliance
 {
     public string Type { get; set; }
     public string Brand { get; set; }
-    public string Condition { get; set; }
+
     public bool IsFunctioning { get; set; }
     public void Use()
     {
-        Console.WriteLine("using appliance brrrr");
+        Console.WriteLine($"using appliance");  
     }
 
-    public KitchenAppliance(string type, string brand, string condition, bool isFunctioning)
+    public KitchenAppliance(string type, string brand, bool isFunctioning)
     {
         Type = type;
         Brand = brand;
         IsFunctioning = isFunctioning;
-        Condition = condition;
+
     }
 
 }

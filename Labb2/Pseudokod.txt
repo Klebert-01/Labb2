@@ -1,13 +1,1 @@
-﻿bool on true
-objektlista med kitchen appliances
-
-
-while [ON]
-
-{
-
-	
-
-}
-
-skriv ut menyn
+﻿
