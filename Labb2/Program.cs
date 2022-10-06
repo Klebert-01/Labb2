@@ -1,5 +1,4 @@
-﻿
-bool on = true;
+﻿bool on = true;
 
 //deklarera listan och lägger till tre objekt av KitchenAppliance-klassen till den
 var applianceList = new List<KitchenAppliance> { new KitchenAppliance("Waffle iron", "Bosch", true),
@@ -9,10 +8,9 @@ var applianceList = new List<KitchenAppliance> { new KitchenAppliance("Waffle ir
 
 while (on)
 {
-    //kallar på menymetoden
     PrintOutMenu();
 
-    //tar emot användarens menyval
+    //ta emot användarens menyval
     int.TryParse(Console.ReadLine(), out int input);
 
     switch (input)
@@ -71,7 +69,7 @@ void UseAppliance()
 
     Int32.TryParse(Console.ReadLine(), out int userChoice);
 
-    foreach (var item in applianceList)     //denna e bara placeholder. Måste koppla userchoice till metoden
+    foreach (var item in applianceList)     //denna e bara för att testa. Måste koppla userchoice input till metoden
     {
         item.Use();
     }
@@ -117,6 +115,12 @@ void AddNewAppliance()
 
 void ListAppliances()
 {
+    if (applianceList.Count < 1)
+    {
+        Console.WriteLine("The kitchen is empty.");
+        return;
+    }
+
     Console.WriteLine("Available appliances:");
     //itererar genom listan av köksapparater
     foreach (var appliance in applianceList)
@@ -149,7 +153,9 @@ void RemoveAppliance()
 
     try
     {
-        applianceList.RemoveAt(userChoice - 1);     //här kan jag använda try catch
+        applianceList.RemoveAt(userChoice - 1);
+        Console.WriteLine("Appliance removed!");    //<--osäker på vart denna ska ligga, kanske utanför trycatchblocket men vad händer om catch sker?
+                                                    //kanske en return så att vi kommer ur metoden? 
     }
     catch (Exception e)
     {
@@ -162,11 +168,8 @@ void RemoveAppliance()
 
 void ListAppliancesNumbered()
 {
-    int i;
-
-    for (i = 0; i < applianceList.Count; i++)
+    for (int i = 0; i < applianceList.Count; i++)
     {
         Console.WriteLine($"{i + 1}. {applianceList[i].Type}");
-
     }
 }

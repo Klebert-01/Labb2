@@ -82,7 +82,7 @@ KRAV:
 	- Typkonvertering [X]
 	- Felhantering med try-catch [X]
 	- Klass/klasser [x]
-	- Abstrakt klass/klasser [ ]	behövs verkligen denna? 
+	- Abstrakt klass/klasser [ ]	behövs verkligen denna? varje ny appliance är ju bara objekt av KitchenAppliance och inte en ärvande klass
 	- Interface: Använd bifogad kod (valfritt att utöka) [X] behövs?
 	- Inkapsling [ ]
 	- Metoder [x]
