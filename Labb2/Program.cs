@@ -69,11 +69,8 @@ void UseAppliance()
 
     Int32.TryParse(Console.ReadLine(), out int userChoice);
 
-    foreach (var item in applianceList)     //denna e bara för att testa. Måste koppla userchoice input till metoden
-    {
-        item.Use();
-    }
-
+    applianceList[userChoice - 1].Use();
+    
 }
 
 void AddNewAppliance()

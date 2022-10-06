@@ -6,6 +6,7 @@
 	Övergripande: 
 		FELHANTERING!!
 
+
 	AddNewAppliance():
 
 		- try catch kan jag nog lägga i istället för if, else if else statementet i AddNewAppliance
@@ -22,7 +23,9 @@
 	UseAppliance():
 		
 		- kan jag göra en switch för valet? eller ska jag ändra applianceList[i] med Console.ReadLine?
-		  och sen skriva ut using applianceList[0] (första elemetet type)
+		  och sen skriva ut using applianceList[0] (första elemetet type)	LÖSTE DENNA
+
+		  Lägg till IF ELSE statement om appliance.IsFunctioning == false, skriv ut trasig går inte att använda!
 
 
 
