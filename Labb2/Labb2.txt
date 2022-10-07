@@ -43,11 +43,11 @@ TO DO NOW:
 
 Specifikationer:
 
-	1. ANVÄND KÖKSAPPARAT [ ]	delvis klar
+	1. ANVÄND KÖKSAPPARAT [x]	delvis klar
 
 		- skriv ut undermeny val av köksapparat
 		- låt användaren välja köksapparat
-		- OM köksapparaten trasig, skriv ut det till användare
+		- OM köksapparaten trasig, skriv ut det till användare <----------
 		  ANNARS skriv ut att apparaten används
 		- gå tillbaka till huvudmenyn
 

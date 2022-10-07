@@ -99,7 +99,12 @@ void AddNewAppliance()
     }
     else
     {
-        Console.WriteLine("You need to enter Y or N, returning to menu try again");
+
+        /*
+         * 
+         * 
+         */
+        Console.WriteLine("You need to enter Y(yes) or N(no), returning to menu.");
         //return gör att vi avslutar metoden, vill egentligen fixa så den bara loopar tillbaka till nytt försök
         return;
     }
