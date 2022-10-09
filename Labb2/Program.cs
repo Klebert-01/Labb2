@@ -35,15 +35,12 @@ while (on)    // MEDANS on är true körs loopen
         default:
             Console.WriteLine("Choose between 1-5 in the menu");
             break;
-
     }
-
 }
 
 
 void UseAppliance()
 {
-
     if (applianceList.Count < 1)    // om listan är tom meddelas användare och vi går ut metoden med "return"
     {
         Console.WriteLine("There is nothing in the kitchen to use.");
@@ -95,7 +92,6 @@ void AddNewAppliance()
         return;
     }
 
-
     KitchenAppliance newAppliance = new KitchenAppliance(newApplianceType, newApplianceBrand, newApplianceIsWorking);  // Skapar nytt objekt med användarens input som parametrar
 
     applianceList.Add(newAppliance);   // Lägger till det nya objektet i listan
@@ -128,7 +124,6 @@ void RemoveAppliance()
         Console.WriteLine($"You need to choose a number corresponding to an appliance in the list.\n\n" +
                           $"{e}\n");
     }
-
 }
 
 void ListAppliances()
