@@ -75,40 +75,43 @@ void AddNewAppliance()//
 {
     string newApplianceType;    // deklarerar variabler för skapande av nytt KitchenAppliance-objekt
     string newApplianceBrand;
-    bool newApplianceIsWorking;
+    bool newApplianceIsFunctioning = false;
+    bool on = true;
+    string yesOrNo = "";
 
-    string yesOrNo = "";    // variabel för användarval om maskinen fungerar eller ej
 
-    Console.Write("Type of appliance: ");   // användare får tilldela värden
-    newApplianceType = Console.ReadLine();
+    Console.Write("Type of appliance: ");
+    newApplianceType = Console.ReadLine();  // tar emot typ
 
     Console.Write("Brand: ");
-    newApplianceBrand = Console.ReadLine();
+    newApplianceBrand = Console.ReadLine(); // tar emot märke
 
-    Console.Write("Is the appliance working or not? (Y/N) ");
-    yesOrNo = Console.ReadLine();
-
-    if (yesOrNo.ToUpper() == "Y")   // OM input är y eller Y, tilldela värdet true till newApplianceIsWorking
+    Console.WriteLine("Is the appliance functioning?");
+    while (on)      // tar emot om maskinen fungerar eller ej
     {
-        newApplianceIsWorking = true;
-    }
-    else if (yesOrNo.ToUpper() == "N")  // ANNARS OM input är n eller N, tilldela värdet false till newApplianceIsWorking
-    {
-        newApplianceIsWorking = false;
-    }
-    else   // ANNARS skriv ut meddelande och lämna metoden med "return"
-    {
-        Console.WriteLine("You need to enter Y(yes) or N(no), returning to menu.");
-        return;
-    }
 
+        if (yesOrNo.ToUpper() == "Y")
+        {
+            newApplianceIsFunctioning = true; // tilldela true till newApplianceIsFunctioning
+            on = false; // går ur loopen
+        }
+        else if (yesOrNo.ToUpper() == "N")
+        {
+            newApplianceIsFunctioning = false;  // tilldelar false till newApplicationIsFunctioning
+            on = false; // går ur loopen
+        }
+        else
+        {
+            Console.Write("Enter Y or N please: ");
+            yesOrNo = Console.ReadLine();   // Tar emot användarval
+        }
+    }      // tar emot om maskinen fungerar eller ej
 
-
-    KitchenAppliance newAppliance = new KitchenAppliance(newApplianceType, newApplianceBrand, newApplianceIsWorking);  // Skapar nytt objekt med användarens input som parametrar
+    KitchenAppliance newAppliance = new KitchenAppliance(newApplianceType, newApplianceBrand, newApplianceIsFunctioning);  // Skapar nytt objekt med användarens input som parametrar
 
     applianceList.Add(newAppliance);   // Lägger till det nya objektet i listan
 
-    Console.WriteLine("New appliance added to the kitchen!\n");
+    Console.WriteLine($"Your new {newApplianceBrand} {newApplianceType.ToLower()} was added to the kitchen!\n");
 }
 
 void RemoveAppliance()

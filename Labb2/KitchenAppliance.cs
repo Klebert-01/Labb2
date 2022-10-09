@@ -1,5 +1,5 @@
 ﻿
-public class KitchenAppliance : IKitchenAppliance
+public class KitchenAppliance : IKitchenAppliance   
 {
     public string Type { get; set; }
     public string Brand { get; set; }

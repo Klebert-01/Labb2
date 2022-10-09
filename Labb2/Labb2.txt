@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 ﻿
 Specifikationer:
+=======
+﻿Spec:
+>>>>>>> AddAppTest
 
 	1. ANVÄND KÖKSAPPARAT [X]
 
