@@ -1,4 +1,4 @@
-﻿bool on = true;    
+﻿bool on = true;
 
 var applianceList = new List<KitchenAppliance> { new KitchenAppliance("Waffle iron", "Bosch", true),    // lista med objekt från KitchenAppliance-klassen
                                                  new KitchenAppliance("Toaster", "LG", true),
@@ -53,14 +53,22 @@ void UseAppliance()
 
     Int32.TryParse(Console.ReadLine(), out int userChoice);    // användarval
 
-    if (applianceList[userChoice - 1].IsFunctioning == false)   // OM maskinen == trasig == kör kod i if-satsen,
+    try
     {
-        Console.WriteLine($"The {applianceList[userChoice - 1].Type} is broken and can't be used.");
+        if (applianceList[userChoice - 1].IsFunctioning == false)   // OM maskinen == trasig == kör kod i if-satsen,
+        {
+            Console.WriteLine($"The {applianceList[userChoice - 1].Type} is broken and can't be used.");
+        }
+        else   // ANNARS kalla på Use-metoden från KitchenAppliance-klassen
+        {
+            applianceList[userChoice - 1].Use();
+        }
     }
-    else   // ANNARS kalla på Use-metoden från KitchenAppliance-klassen
+    catch (Exception e)
     {
-        applianceList[userChoice - 1].Use();
+        Console.WriteLine($"Incorrect input\n{e}\n");
     }
+    Console.WriteLine("");
 }
 
 void AddNewAppliance()
@@ -69,6 +77,8 @@ void AddNewAppliance()
     string newApplianceBrand;
     bool newApplianceIsWorking;
 
+    string yesOrNo = "";    // variabel för användarval om maskinen fungerar eller ej
+
     Console.Write("Type of appliance: ");   // användare får tilldela värden
     newApplianceType = Console.ReadLine();
 
@@ -76,7 +86,7 @@ void AddNewAppliance()
     newApplianceBrand = Console.ReadLine();
 
     Console.Write("Is the appliance working or not? (Y/N) ");
-    string yesOrNo = Console.ReadLine();
+    yesOrNo = Console.ReadLine();
 
     if (yesOrNo.ToUpper() == "Y")   // OM input är y eller Y, tilldela värdet true till newApplianceIsWorking
     {
@@ -91,6 +101,8 @@ void AddNewAppliance()
         Console.WriteLine("You need to enter Y(yes) or N(no), returning to menu.");
         return;
     }
+
+
 
     KitchenAppliance newAppliance = new KitchenAppliance(newApplianceType, newApplianceBrand, newApplianceIsWorking);  // Skapar nytt objekt med användarens input som parametrar
 
@@ -109,7 +121,7 @@ void RemoveAppliance()
 
     Console.WriteLine("Choose corresponding number: ");
 
-    ListAppliancesNumbered();   
+    ListAppliancesNumbered();
 
     Int32.TryParse(Console.ReadLine(), out int userChoice);    // användarinput
 
@@ -151,6 +163,7 @@ void ListAppliances()
             Console.WriteLine("State: Not functioning");
         }
     }
+    Console.WriteLine("");
 }
 
 void ListAppliancesNumbered()
