@@ -85,23 +85,22 @@ void AddNewAppliance()
     Console.Write("Brand: ");
     newApplianceBrand = Console.ReadLine();
 
-    Console.Write("Is the appliance working or not? (Y/N) ");
-    yesOrNo = Console.ReadLine();
+    while (yesOrNo.ToUpper() != "Y" || yesOrNo.ToUpper() != "N")
+    {
+        Console.Write("Is the appliance working or not? (Y/N) ");
+        yesOrNo = Console.ReadLine();
+
+        Console.WriteLine("You need to enter Y(yes) or N(no)");
+    }
 
     if (yesOrNo.ToUpper() == "Y")   // OM input är y eller Y, tilldela värdet true till newApplianceIsWorking
     {
         newApplianceIsWorking = true;
     }
-    else if (yesOrNo.ToUpper() == "N")  // ANNARS OM input är n eller N, tilldela värdet false till newApplianceIsWorking
+    else   // ANNARS tilldela värdet false till newApplianceIsWorking
     {
         newApplianceIsWorking = false;
     }
-    else   // ANNARS skriv ut meddelande och lämna metoden med "return"
-    {
-        Console.WriteLine("You need to enter Y(yes) or N(no), returning to menu.");
-        return;
-    }
-
 
 
     KitchenAppliance newAppliance = new KitchenAppliance(newApplianceType, newApplianceBrand, newApplianceIsWorking);  // Skapar nytt objekt med användarens input som parametrar
