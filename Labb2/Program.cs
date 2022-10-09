@@ -105,7 +105,7 @@ void AddNewAppliance()
             Console.Write("Enter Y or N please: ");
             yesOrNo = Console.ReadLine();   // Tar emot användarval
         }
-    }       // tar emot om maskinen fungerar eller ej
+    }      // tar emot om maskinen fungerar eller ej
 
     KitchenAppliance newAppliance = new KitchenAppliance(newApplianceType, newApplianceBrand, newApplianceIsFunctioning);  // Skapar nytt objekt med användarens input som parametrar
 
