@@ -1,17 +1,14 @@
-﻿bool on = true;
+﻿bool on = true;    
 
-//deklarera listan och lägger till tre objekt av KitchenAppliance-klassen till den
-var applianceList = new List<KitchenAppliance> { new KitchenAppliance("Waffle iron", "Bosch", true),
+var applianceList = new List<KitchenAppliance> { new KitchenAppliance("Waffle iron", "Bosch", true),    // lista med objekt från KitchenAppliance-klassen
                                                  new KitchenAppliance("Toaster", "LG", true),
                                                  new KitchenAppliance("Coffee maker", "Electrolux",false) };
 
-
-while (on)
+while (on)    // MEDANS on är true körs loopen
 {
     PrintOutMenu();
 
-    //ta emot användarens menyval
-    int.TryParse(Console.ReadLine(), out int input);
+    int.TryParse(Console.ReadLine(), out int input);    // användarens menyval
 
     switch (input)
     {
@@ -32,10 +29,9 @@ while (on)
             break;
 
         case 5:
-            Console.WriteLine("Leaving the kitchen");
-            //bool on blir false, går ur whileloopen/avslutar programmet
-            on = false;
+            LeaveKitchen();
             break;
+
         default:
             Console.WriteLine("Choose between 1-5 in the menu");
             break;
@@ -44,6 +40,131 @@ while (on)
 
 }
 
+
+void UseAppliance()
+{
+
+    if (applianceList.Count < 1)    // om listan är tom meddelas användare och vi går ut metoden med "return"
+    {
+        Console.WriteLine("There is nothing in the kitchen to use.");
+        return;
+    }
+
+    Console.WriteLine("What appliance do you want to use?\n");
+
+    ListAppliancesNumbered();
+
+    Int32.TryParse(Console.ReadLine(), out int userChoice);    // användarval
+
+    if (applianceList[userChoice - 1].IsFunctioning == false)   // OM maskinen == trasig == kör kod i if-satsen,
+    {
+        Console.WriteLine($"The {applianceList[userChoice - 1].Type} is broken and can't be used.");
+    }
+    else   // ANNARS kalla på Use-metoden från KitchenAppliance-klassen
+    {
+        applianceList[userChoice - 1].Use();
+    }
+}
+
+void AddNewAppliance()
+{
+    string newApplianceType;    // deklarerar variabler för skapande av nytt KitchenAppliance-objekt
+    string newApplianceBrand;
+    bool newApplianceIsWorking;
+
+    Console.Write("Type of appliance: ");   // användare får tilldela värden
+    newApplianceType = Console.ReadLine();
+
+    Console.Write("Brand: ");
+    newApplianceBrand = Console.ReadLine();
+
+    Console.Write("Is the appliance working or not? (Y/N) ");
+    string yesOrNo = Console.ReadLine();
+
+    if (yesOrNo.ToUpper() == "Y")   // OM input är y eller Y, tilldela värdet true till newApplianceIsWorking
+    {
+        newApplianceIsWorking = true;
+    }
+    else if (yesOrNo.ToUpper() == "N")  // ANNARS OM input är n eller N, tilldela värdet false till newApplianceIsWorking
+    {
+        newApplianceIsWorking = false;
+    }
+    else   // ANNARS skriv ut meddelande och lämna metoden med "return"
+    {
+        Console.WriteLine("You need to enter Y(yes) or N(no), returning to menu.");
+        return;
+    }
+
+
+    KitchenAppliance newAppliance = new KitchenAppliance(newApplianceType, newApplianceBrand, newApplianceIsWorking);  // Skapar nytt objekt med användarens input som parametrar
+
+    applianceList.Add(newAppliance);   // Lägger till det nya objektet i listan
+
+    Console.WriteLine("New appliance added to the kitchen!\n");
+}
+
+void RemoveAppliance()
+{
+    if (applianceList.Count < 1)   // om listan är tom meddelas användare och vi går ut metoden med "return"
+    {
+        Console.WriteLine("There is nothing in the kitchen to remove.");
+        return;
+    }
+
+    Console.WriteLine("Choose corresponding number: ");
+
+    ListAppliancesNumbered();   
+
+    Int32.TryParse(Console.ReadLine(), out int userChoice);    // användarinput
+
+    try
+    {
+        applianceList.RemoveAt(userChoice - 1);    // Kallar på RemoveAt metoden (-1 för att hamna på rätt indexnummer)
+        Console.WriteLine("Appliance removed!");
+    }
+    catch (Exception e)
+    {
+        //skriver ut instruktioner till användaren samt exception-meddelandet
+        Console.WriteLine($"You need to choose a number corresponding to an appliance in the list.\n\n" +
+                          $"{e}\n");
+    }
+
+}
+
+void ListAppliances()
+{
+    if (applianceList.Count < 1)    // om listan är tom meddelas användare och vi går ut metoden med "return"
+    {
+        Console.WriteLine("The kitchen is empty.");
+        return;
+    }
+
+    Console.WriteLine("Available appliances:");
+
+    foreach (var appliance in applianceList)    // itererar genom listan av köksapparater
+    {
+        Console.WriteLine($"---------------------\n" +   // skriver ut typ, märke och skick för varje objekt i listan
+                          $"Type: {appliance.Type}\n" +
+                          $"Brand: {appliance.Brand}");
+
+        if (appliance.IsFunctioning == true)    // OM IsFunctioning är tilldelad true, kör if-satsen
+        {
+            Console.WriteLine("State: Functioning");
+        }
+        else   // ANNARS skriv ut not functioning
+        {
+            Console.WriteLine("State: Not functioning");
+        }
+    }
+}
+
+void ListAppliancesNumbered()
+{
+    for (int i = 0; i < applianceList.Count; i++)   // iterera igenom längden på listan med objekt
+    {
+        Console.WriteLine($"{i + 1}. {applianceList[i].Type}");    // skriver ut indexnr + 1 samt typen av varje objekt i listan
+    }
+}
 
 void PrintOutMenu()
 {
@@ -55,123 +176,8 @@ void PrintOutMenu()
                       "[5] Leave the kitchen");
 }
 
-void UseAppliance()
+void LeaveKitchen()
 {
-
-    if (applianceList.Count < 1)
-    {
-        Console.WriteLine("There is nothing in the kitchen to use.");
-        return;
-    }
-
-    Console.WriteLine("What appliance do you want to use?\n");
-    ListAppliancesNumbered();
-
-    Int32.TryParse(Console.ReadLine(), out int userChoice);
-
-    applianceList[userChoice - 1].Use();
-    
-}
-
-void AddNewAppliance()
-{
-    //deklarerar variabler för skapande av nytt KitchenAppliance-objekt
-    string newApplianceType;
-    string newApplianceBrand;
-    bool newApplianceIsWorking;
-
-    Console.Write("Type of appliance: ");
-    newApplianceType = Console.ReadLine();
-
-    Console.Write("Brand: ");
-    newApplianceBrand = Console.ReadLine();
-
-    Console.Write("Is the appliance working or not? (Y/N) ");
-    string yesOrNo = Console.ReadLine();
-
-    if (yesOrNo.ToUpper() == "Y")
-    {
-        newApplianceIsWorking = true;
-    }
-    else if (yesOrNo.ToUpper() == "N")
-    {
-        newApplianceIsWorking = false;
-    }
-    else
-    {
-
-        /*
-         * 
-         * 
-         */
-        Console.WriteLine("You need to enter Y(yes) or N(no), returning to menu.");
-        //return gör att vi avslutar metoden, vill egentligen fixa så den bara loopar tillbaka till nytt försök
-        return;
-    }
-
-    KitchenAppliance newAppliance = new KitchenAppliance(newApplianceType, newApplianceBrand, newApplianceIsWorking); //går det att göra denna på ett smartare sett? 
-    applianceList.Add(newAppliance);
-
-    Console.WriteLine("New appliance added to the kitchen!\n");
-}
-
-void ListAppliances()
-{
-    if (applianceList.Count < 1)
-    {
-        Console.WriteLine("The kitchen is empty.");
-        return;
-    }
-
-    Console.WriteLine("Available appliances:");
-    //itererar genom listan av köksapparater
-    foreach (var appliance in applianceList)
-    {
-        //skriver ut typ, märke och skick för varje objekt i listan med apparater
-        Console.WriteLine($"---------------------\n" +
-                          $"Type: {appliance.Type}\n" +
-                          $"Brand: {appliance.Brand}");
-        //om classmember(?) IsFunctioning är satt till true, skriver ut functioning
-        if (appliance.IsFunctioning == true)
-            Console.WriteLine("State: Functioning");
-        //annars skriv ut not functioning
-        else
-            Console.WriteLine("State: Not functioning");
-    }
-}
-
-void RemoveAppliance()
-{
-    if (applianceList.Count < 1)
-    {
-        Console.WriteLine("There is nothing in the kitchen to remove.");
-        return;
-    }
-
-    Console.WriteLine("Choose corresponding number: ");
-    ListAppliancesNumbered();
-
-    Int32.TryParse(Console.ReadLine(), out int userChoice);
-
-    try
-    {
-        applianceList.RemoveAt(userChoice - 1);
-        Console.WriteLine("Appliance removed!");    //<--osäker på vart denna ska ligga, kanske utanför trycatchblocket men vad händer om catch sker?
-                                                    //kanske en return så att vi kommer ur metoden? 
-    }
-    catch (Exception e)
-    {
-        //skriver ut instruktioner till användaren samt exception-meddelandet
-        Console.WriteLine($"You need to choose a number corresponding to an appliance in the list.\n\n" +
-                          $"{e}\n");
-    }
-
-}
-
-void ListAppliancesNumbered()
-{
-    for (int i = 0; i < applianceList.Count; i++)
-    {
-        Console.WriteLine($"{i + 1}. {applianceList[i].Type}");
-    }
+    Console.WriteLine("Leaving the kitchen");
+    on = false;    // avslutar whileloopen/programmet
 }

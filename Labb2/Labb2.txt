@@ -1,49 +1,10 @@
-﻿NOTES:
-
-	KitchenAppliance.cs
-		vill lägga till att use metoden bara skriver ut "using type"
+﻿
+		- dubbelkolla att all felaktig input är felhanterad [ ]
 	
-	Övergripande: 
-		FELHANTERING!!
-
-
-	AddNewAppliance():
-
-		- try catch kan jag nog lägga i istället för if, else if else statementet i AddNewAppliance
-			eller kanske fel ställe att lägga det på.. 
-
-		- Return vid else statementet. 
-			vill egentligen loopa den så man får skriva Y/N igen och inte göra om hela processen
-			
-			2
-
-			4
-		- behöver jag lägga listan i en egen klass och sen använda "using" av den klassen? 
-
-	UseAppliance():
-		
-		- kan jag göra en switch för valet? eller ska jag ändra applianceList[i] med Console.ReadLine?
-		  och sen skriva ut using applianceList[0] (första elemetet type)	LÖSTE DENNA
-
-		  Lägg till IF ELSE statement om appliance.IsFunctioning == false, skriv ut trasig går inte att använda!
-
-
-
-
-
-TO DO NOW:
-	1. list appliances metoden
-	2. use appliance metoden
-	3. add new
-	4. remove appl
-
-
-	
-
 
 Specifikationer:
 
-	1. ANVÄND KÖKSAPPARAT [x]	delvis klar
+	1. ANVÄND KÖKSAPPARAT [X]
 
 		- skriv ut undermeny val av köksapparat
 		- låt användaren välja köksapparat
@@ -51,7 +12,7 @@ Specifikationer:
 		  ANNARS skriv ut att apparaten används
 		- gå tillbaka till huvudmenyn
 
-	2. LÄGG TILL NY KÖKSAPPARAT [x]	mer eller mindre klar
+	2. LÄGG TILL NY KÖKSAPPARAT [X]
 
 		- användare får mata in typ, märke, skick samt "j" eller "n"
 			OM "j" betyder det att apparaten fungerar, OM "n" betyder det att apparaten är trasig
@@ -85,7 +46,7 @@ KRAV:
 	- Typkonvertering [X]
 	- Felhantering med try-catch [X]
 	- Klass/klasser [x]
-	- Abstrakt klass/klasser [ ]	behövs verkligen denna? varje ny appliance är ju bara objekt av KitchenAppliance och inte en ärvande klass
+	- Abstrakt klass/klasser []
 	- Interface: Använd bifogad kod (valfritt att utöka) [X] behövs?
 	- Inkapsling [ ]
 	- Metoder [x]
