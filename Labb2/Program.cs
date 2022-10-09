@@ -71,7 +71,7 @@ void UseAppliance()
     Console.WriteLine("");
 }
 
-void AddNewAppliance()
+void AddNewAppliance()//
 {
     string newApplianceType;    // deklarerar variabler för skapande av nytt KitchenAppliance-objekt
     string newApplianceBrand;

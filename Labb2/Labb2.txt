@@ -1,7 +1,4 @@
 ﻿
-		- dubbelkolla att all felaktig input är felhanterad [ ]
-	
-
 Specifikationer:
 
 	1. ANVÄND KÖKSAPPARAT [X]
