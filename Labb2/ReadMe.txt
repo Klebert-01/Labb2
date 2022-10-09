@@ -53,5 +53,5 @@ KRAV:
 
 EGNA NOTES:
 
-	- Lägga in metoder i egen klass?
-	- MVC struktur?
+	- Lägga in metoder i egen klass /mvc(?) struktur
+	- lägga till streamreader och läsa/spara ner listan med objekt till fil
