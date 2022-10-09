@@ -71,7 +71,7 @@ void UseAppliance()
     Console.WriteLine("");
 }
 
-void AddNewAppliance()//
+void AddNewAppliance()
 {
     string newApplianceType;    // deklarerar variabler för skapande av nytt KitchenAppliance-objekt
     string newApplianceBrand;
@@ -105,7 +105,7 @@ void AddNewAppliance()//
             Console.Write("Enter Y or N please: ");
             yesOrNo = Console.ReadLine();   // Tar emot användarval
         }
-    }      // tar emot om maskinen fungerar eller ej
+    }
 
     KitchenAppliance newAppliance = new KitchenAppliance(newApplianceType, newApplianceBrand, newApplianceIsFunctioning);  // Skapar nytt objekt med användarens input som parametrar
 
