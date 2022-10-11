@@ -107,7 +107,7 @@ void AddNewAppliance()
         }
     }
 
-    KitchenAppliance newAppliance = new KitchenAppliance(newApplianceType, newApplianceBrand, newApplianceIsFunctioning);  // Skapar nytt objekt med användarens input som parametrar
+    KitchenAppliance newAppliance = new KitchenAppliance(newApplianceType, newApplianceBrand, newApplianceIsFunctioning);  // Skapar nytt objekt med användarens inputs som parametrar
 
     applianceList.Add(newAppliance);   // Lägger till det nya objektet i listan
 
